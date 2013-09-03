@@ -1,0 +1,83 @@
+# pi-gpio tutorial for pijs.io
+
+## Setup :
+
+First install pi-gpio from npm. To use it through pijs.io, you have to install it globally, like this :
+
+  npm install -g pi-gpio
+
+
+## Hello World :
+
+The first thing you might want to do to start playing with electronics is make a LED shine on your breadboard.
+It simply takes a LED and a resistor of 280ohm.
+
+Connect one end of the LED to an available GPIO pin, the other to the resistor, and the resistor to the ground pin.
+
+Lighting the LED will be accomplished by setting the pin in a state called HIGH. Digital pins, like those present on the RPI, have two distinct states, LOW or HIGH. They can be used in two different modes, INPUT and OUTPUT, depending if you want to read or write values. In our case, we will be using the OUTPUT mode, as we want to control the state of the LED. (insert schema, and reduce sentence ;) )
+
+Another thing to care for is the layout of the pins on the RPI. Only some of them are available, and their layout is not very linear. (insert reference to the wiringPI tutorial here).
+
+The example code on the pi-gpio home page shows us how we can write a value in an output pin. We'll be using the pin 11, also known as GPIO0 according the RPI pins layout.
+
+  var gpio = require("pi-gpio");
+
+  gpio.open(11, "output", function(e) {
+  	gpio.write(11, 1, function(e){
+  		gpio.close(11);
+  	})
+  });
+
+Basically, you have to request an access to the pin (opening it) in output mode and write the value. You might also want to close the pin if you don't intend to use it anymore (or if any other process might want to access it later).
+
+And that's it, you should see the light. Nothing can stop you from now on.
+
+
+## Knight Rider :
+
+Just for the fun, why don't you try to wire 6 leds and resistors ? Find 6 free GPIO pins on your board, and make a nice layout.
+
+The following script should turn them on and off in sequence. Take that as a starting point and make your own light show !
+
+
+  var gpio = require("pi-gpio");
+  var pins = [11,12,13,15,16,18];
+  var state = 0;
+  var currentPin = 0;
+  var interval = 100;
+
+
+  openAllPins();
+  setTimeout(togglePin,100);
+
+  function openAllPins() 
+  {
+    for(var i=0;i<pins.length;i++)
+    {
+       gpio.open(pins[i], "output");
+    }
+  }
+
+  function togglePin()
+  {
+    // set the state of the current pin
+    gpio.write(pins[currentPin], state);
+
+    // find next pin (invert state if needed)
+    if ( ++currentPin >= pins.length ) 
+    {
+      currentPin = 0;
+      state = 1-state;
+    }
+
+    // repeat
+    setTimeout(togglePin,interval);
+  }
+
+  function closeAllPins() 
+  {
+    for(var i=0;i<pins.length;i++)
+    {
+       gpio.close(pins[i]);
+    }
+  }
