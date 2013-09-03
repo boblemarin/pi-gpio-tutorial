@@ -35,6 +35,9 @@ And that's it, you should see the light. Nothing can stop you from now on.
 
 ## Knight Rider :
 
+![6 LEDS in action](https://raw.github.com/boblemarin/pi-gpio-tutorial/master/leds.gif)
+
+
 Just for the fun, why don't you try to wire 6 leds and resistors ? Find 6 free GPIO pins on your board, and make a nice layout.
 
 The following script should turn them on and off in sequence. Take that as a starting point and make your own light show !
