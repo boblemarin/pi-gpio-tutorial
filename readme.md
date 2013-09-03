@@ -20,13 +20,13 @@ Another thing to care for is the layout of the pins on the RPI. Only some of the
 
 The example code on the pi-gpio home page shows us how we can write a value in an output pin. We'll be using the pin 11, also known as GPIO0 according the RPI pins layout.
 
-  var gpio = require("pi-gpio");
+	var gpio = require("pi-gpio");
 
-  gpio.open(11, "output", function(e) {
-  	gpio.write(11, 1, function(e){
-  		gpio.close(11);
-  	})
-  });
+	gpio.open(11, "output", function(e) {
+		gpio.write(11, 1, function(e){
+			gpio.close(11);
+		})
+	});
 
 Basically, you have to request an access to the pin (opening it) in output mode and write the value. You might also want to close the pin if you don't intend to use it anymore (or if any other process might want to access it later).
 
@@ -40,44 +40,44 @@ Just for the fun, why don't you try to wire 6 leds and resistors ? Find 6 free G
 The following script should turn them on and off in sequence. Take that as a starting point and make your own light show !
 
 
-  var gpio = require("pi-gpio");
-  var pins = [11,12,13,15,16,18];
-  var state = 0;
-  var currentPin = 0;
-  var interval = 100;
+	var gpio = require("pi-gpio");
+	var pins = [11,12,13,15,16,18];
+	var state = 0;
+	var currentPin = 0;
+	var interval = 100;
 
 
-  openAllPins();
-  setTimeout(togglePin,100);
+	openAllPins();
+	setTimeout(togglePin,100);
 
-  function openAllPins() 
-  {
-    for(var i=0;i<pins.length;i++)
-    {
-       gpio.open(pins[i], "output");
-    }
-  }
+	function openAllPins() 
+	{
+	  for(var i=0;i<pins.length;i++)
+	  {
+	     gpio.open(pins[i], "output");
+	  }
+	}
 
-  function togglePin()
-  {
-    // set the state of the current pin
-    gpio.write(pins[currentPin], state);
+	function togglePin()
+	{
+	  // set the state of the current pin
+	  gpio.write(pins[currentPin], state);
 
-    // find next pin (invert state if needed)
-    if ( ++currentPin >= pins.length ) 
-    {
-      currentPin = 0;
-      state = 1-state;
-    }
+	  // find next pin (invert state if needed)
+	  if ( ++currentPin >= pins.length ) 
+	  {
+	    currentPin = 0;
+	    state = 1-state;
+	  }
 
-    // repeat
-    setTimeout(togglePin,interval);
-  }
+	  // repeat
+	  setTimeout(togglePin,interval);
+	}
 
-  function closeAllPins() 
-  {
-    for(var i=0;i<pins.length;i++)
-    {
-       gpio.close(pins[i]);
-    }
-  }
+	function closeAllPins() 
+	{
+	  for(var i=0;i<pins.length;i++)
+	  {
+	     gpio.close(pins[i]);
+	  }
+	}
