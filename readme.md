@@ -4,7 +4,7 @@
 
 First install pi-gpio from npm. To use it through pijs.io, you have to install it globally, like this :
 
-  npm install -g pi-gpio
+	npm install -g pi-gpio
 
 
 ## Hello World :
