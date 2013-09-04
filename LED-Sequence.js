@@ -1,12 +1,12 @@
 var gpio = require("pi-gpio");
 var pins = [11,12,22,15,16,18];//tmp: 18 , 13=cassé
-var state = 0;
+var state = 1;
 var currentPin = 0;
 var interval = 100;
 
 
 openAllPins();
-setTimeout(togglePin,100); // initial delay is a magic number, I haven't searched for anything better since it worked from the first time
+setTimeout(togglePin,100); // magic number alert ! :)
 
 function openAllPins() 
 {
@@ -32,6 +32,7 @@ function togglePin()
   setTimeout(togglePin,interval);
 }
 
+// not used here
 function closeAllPins() 
 {
   for(var i=0;i<pins.length;i++)

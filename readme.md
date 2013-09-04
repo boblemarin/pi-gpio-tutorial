@@ -12,9 +12,9 @@ First install pi-gpio from npm. To use it through pijs.io, you have to install i
 The first thing you might want to do to start playing with electronics is make a LED shine on your breadboard.
 It simply takes a LED and a resistor of 280ohm.
 
-Connect one end of the LED to an available GPIO pin, the other to the resistor, and the resistor to the ground pin.
+Connect one end of the LED to an available GPIO pin, the other to the resistor, and the resistor to the ground pin. (insert schema) 
 
-Lighting the LED will be accomplished by setting the pin in a state called HIGH. Digital pins, like those present on the RPI, have two distinct states, LOW or HIGH. They can be used in two different modes, INPUT and OUTPUT, depending if you want to read or write values. In our case, we will be using the OUTPUT mode, as we want to control the state of the LED. (insert schema, and reduce sentence ;) )
+Lighting the LED will be accomplished by setting the pin in a state called HIGH. Digital pins, like those present on the RPI, have two distinct states, LOW or HIGH. They can be used in two different modes, INPUT and OUTPUT, depending if you want to read or write values. In our case, we will be using the OUTPUT mode, as we want to control the state of the LED.
 
 Another thing to care for is the layout of the pins on the RPI. Only some of them are available, and their layout is not very linear. (insert reference to the wiringPI tutorial here).
 
