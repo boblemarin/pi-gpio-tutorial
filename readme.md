@@ -12,7 +12,7 @@ First install pi-gpio from npm. To use it through pijs.io, you have to install i
 The first thing you might want to do to start playing with electronics is make a LED shine on your breadboard.
 It simply takes a LED and a 280ohm resistor.
 
-![6 LEDS in action](https://raw.github.com/boblemarin/pi-gpio-tutorial/master/1led_gpio_bb1.jpg)
+<img src="https://raw.github.com/boblemarin/pi-gpio-tutorial/master/1led_gpio_bb1.jpg" width="500"/>
 
 Connect one end of the LED to an available GPIO pin, the other to the resistor, and the resistor to the ground pin. The above image is taken from [this WiringPI tutorial](https://projects.drogon.net/raspberry-pi/gpio-examples/tux-crossing/gpio-examples-1-a-single-led/) by [Gordon Henderson](https://twitter.com/drogon). If you are just starting to play with eletronic components, you might find useful [to read it](https://projects.drogon.net/raspberry-pi/gpio-examples/tux-crossing/gpio-examples-1-a-single-led/).
 
