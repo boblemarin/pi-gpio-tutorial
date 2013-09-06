@@ -6,6 +6,16 @@ First install pi-gpio from npm. To use it through pijs.io, you have to install i
 
 	npm install -g pi-gpio
 
+Then, install gpio-admin, a command line utility for controlling the gpio pins. pi-gpio will be using it behind the scenes.
+([more details from the source](https://npmjs.org/package/pi-gpio))
+
+	git clone git://github.com/quick2wire/quick2wire-gpio-admin.git
+	cd quick2wire-gpio-admin
+	make
+	sudo make install
+	sudo adduser $USER gpio
+
+Don't forget to logout after the installation, or gpio-admin won't work.
 
 ## Hello World :
 
