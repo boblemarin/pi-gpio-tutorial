@@ -4,7 +4,7 @@
 
 First install pi-gpio from npm. To use it through pijs.io, you have to install it globally, like this :
 
-	npm install -g pi-gpio
+	sudo npm install -g pi-gpio
 
 Then, install gpio-admin, a command line utility for controlling the gpio pins. pi-gpio will be using it behind the scenes.
 ([more details from the source](https://npmjs.org/package/pi-gpio))
